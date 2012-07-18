@@ -156,7 +156,11 @@ public class ICalendarBuilder extends BuilderSupport {
         /*
        set internet address to null otherwise it takes awful lots of time to resolve a hostname or ip address
         */
-        currentEvent.properties << new UidGenerator(null, 'iCalPlugin-Grails').generateUid()
+        if(params.uid) {
+            currentEvent.properties << new Uid(params.uid)
+        } else {
+            currentEvent.properties << new UidGenerator(null, 'iCalPlugin-Grails').generateUid()
+        }
         currentEvent.properties << tz.timeZoneId
         if (params.location) currentEvent.properties << new Location(params.location)
         if (params.description) currentEvent.properties << new Description(params.description)
