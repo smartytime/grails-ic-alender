@@ -151,8 +151,10 @@ public class ICalendarBuilder extends BuilderSupport {
         }
         VTimeZone tz = timezone.vTimeZone
 
-        currentEvent = new VEvent(new DateTime(params.start),
-                new DateTime(params.end), params.summary)
+        DateTime startTime = new DateTime(params.start.toString(), timezone)
+        DateTime endTime = new DateTime(params.end.toString(), timezone)
+
+        currentEvent = new VEvent(startTime, endTime, params.summary)
         /*
        set internet address to null otherwise it takes awful lots of time to resolve a hostname or ip address
         */
