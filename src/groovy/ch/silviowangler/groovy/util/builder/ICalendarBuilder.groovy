@@ -151,8 +151,8 @@ public class ICalendarBuilder extends BuilderSupport {
         }
         VTimeZone tz = timezone.vTimeZone
 
-        DateTime startTime = new DateTime(params.start.toString(), timezone)
-        DateTime endTime = new DateTime(params.end.toString(), timezone)
+        DateTime startTime = new DateTime(params.start.format("yyyyMMdd'T'HHmmss"), timezone)
+        DateTime endTime = new DateTime(params.end.format("yyyyMMdd'T'HHmmss"), timezone)
 
         currentEvent = new VEvent(startTime, endTime, params.summary)
         /*
